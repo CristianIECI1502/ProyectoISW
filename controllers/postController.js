@@ -14,11 +14,17 @@ const createPost = (req, res) =>{
     })
 }
 const getPosts =(req, res)=>{
-    Post.find({},(err, posts) =>{
+    /*Post.find({},(err, posts) =>{
         if(err){
             return res.status(400).send({message:'no hay anuncios publicados'})
         }
         return res.status(200).send(posts)
+    })*/
+    Post.find({}).populate({ path: 'comment'}).exec((err, post)=>{
+        if (err){
+            return res.status(400).send({message:'no hay anuncios publicados'})
+        }
+        return res.status(200).send(post)
     })
 }
 const updatePost =(req, res)=>{
