@@ -13,7 +13,16 @@ const createPost = (req, res) =>{
         return res.status(200).send(post)
     })
 }
+const getPosts =(req, res)=>{
+    Post.find({},(err, posts) =>{
+        if(err){
+            return res.status(400).send({message:'Error al crear el anuncio/aviso'})
+        }
+        return res.status(200).send(posts)
+    })
+}
 
 module.exports ={
-    createPost
+    createPost,
+    getPosts
 }
