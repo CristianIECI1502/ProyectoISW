@@ -9,10 +9,6 @@ const PostSchema= new Schema({
         type:Schema.ObjectID,
         ref:'like'
     },
-    comment:{
-        type:Schema.ObjectID,
-        ref:'comment'
-    },
     user:{
         type:Schema.ObjectID,
         ref:'user'
@@ -20,6 +16,10 @@ const PostSchema= new Schema({
     createdAt:{
         type: Date,
         default: Date.now()
+    },
+    comment: {
+        type: Schema.ObjectId,
+        ref: 'comment'
     }
 });
 

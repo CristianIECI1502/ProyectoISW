@@ -5,11 +5,13 @@ require('dotenv').config();
 
 const app =express();
 const postRoutes = require('./routes/postRoutes');
+const commentRoutes = require('./routes/commentRoutes');
 
 app.use(cors())
 app.use(express.json());
 app.options('*',cors());
 app.use('/api',postRoutes);
+app.use('/api',commentRoutes);
 
 app.listen(process.env.PORT, () => console.log('Server started in port ',process.env.PORT));
 
