@@ -1,20 +1,45 @@
 {
     "users": {
-    "name":{
-        "type":"String",
-        "required":true
+        "name":{
+            "type":"String",
+            "required":true
+        },
+        "password":{
+            "type":"String",
+            "required": true
+        },
+        "role":{
+            "type":"String",
+            "enum":[
+                "admin",
+                "user"
+            ],
+            "default":"user"
+        }
     },
-    "password":{
-        "type":"String",
-        "required": true
+    "post":{
+        "description":{
+            "type":"String",
+            "required": true
+        },
+        "like":{
+            "type":"Schema.ObjectID",
+            "ref":"Like"
+        },
+        "comment":{
+            "type":"Schema.ObjectID",
+            "ref":"Comment"
+        },
+        "user":{
+            "type":"Schema.ObjectID",
+            "ref":"Users"
+        }
     },
-    "role":{
-        "type":"String",
-        "enum":[
-            "admin",
-            "user"
-        ],
-        "default":"user"
+    "like":{
+        "type":"Number"
+    },
+    "comment":{
+        "type":"String"
     }
- }
+
 }
