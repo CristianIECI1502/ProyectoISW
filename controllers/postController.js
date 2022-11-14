@@ -20,7 +20,7 @@ const getPosts =(req, res)=>{
         }
         return res.status(200).send(posts)
     })*/
-    Post.find({}).populate({ path: 'comment'}).exec((err, post)=>{
+    Post.find({}).populate('user','name').exec((err, post)=>{
         if (err){
             return res.status(400).send({message:'no hay anuncios publicados'})
         }

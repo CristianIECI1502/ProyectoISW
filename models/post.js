@@ -8,10 +8,6 @@ const PostSchema= new Schema({
     /*like:{
         type:Schema.ObjectID,
         ref:'like'
-    },
-    user:{
-        type:Schema.ObjectID,
-        ref:'user'
     },*/
     createdAt:{
         type: Date,
@@ -20,7 +16,11 @@ const PostSchema= new Schema({
     comment: {
         type: Schema.ObjectId,
         ref: 'comment'
-    }
+    },
+    user: {
+        type: Schema.ObjectId,
+        ref: 'user'
+    },
 });
 
 module.exports =mongoose.model('post',PostSchema);

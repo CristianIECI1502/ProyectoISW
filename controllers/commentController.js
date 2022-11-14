@@ -39,10 +39,10 @@ const deleteComment=(req, res)=>{
     const { id }=req.params;
     Comment.findByIdAndDelete(id, req.body,(err,comments)=>{
         if(err){
-            return res.status(400).send({message:"Erroal encontrar el comentario"})
+            return res.status(400).send({message:"Error al encontrar el comentario"})
         }
         if(!comments){
-            return res.status(400).send({message:"comentrio no disponible"})
+            return res.status(400).send({message:"comentario no disponible"})
         }
         return res.status(200).send(comments)
     })
