@@ -58,7 +58,7 @@
                 "inactive",
                 "pending"
             ],
-            "default":"pendiente"
+            "default":"pending"
         }
     }
 }
