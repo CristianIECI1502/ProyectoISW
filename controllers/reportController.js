@@ -1,10 +1,11 @@
 const Report = require('../models/report');
 
 const createReport = (req, res)=>{
-    const{name}=req.body;
+    const{name,status}=req.body;
     //console.log(name)
     const newReport = new Report({
-        name
+        name,
+        status
     });
     newReport.save((err,report)=>{
         if(err){
@@ -42,7 +43,7 @@ const deleteReport=(req, res)=>{
             return res.status(400).send({message:"Error al encontrar el reporte"})
         }
         if(!reports){
-            return res.status(400).send({message:"reporte no disponible"})
+            return res.status(404).send({message:"reporte no disponible"})
         }
         return res.status(200).send(reports)
     })

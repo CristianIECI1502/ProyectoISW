@@ -42,7 +42,7 @@ const deleteComment=(req, res)=>{
             return res.status(400).send({message:"Error al encontrar el comentario"})
         }
         if(!comments){
-            return res.status(400).send({message:"comentario no disponible"})
+            return res.status(404).send({message:"comentario no disponible"})
         }
         return res.status(200).send(comments)
     })

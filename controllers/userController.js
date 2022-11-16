@@ -2,7 +2,7 @@ const User = require('../models/user');
 
 const createUser = (req, res)=>{
     const{name,password}=req.body;
-    console.log(name)
+    //console.log(name)
     const newUser = new User({
         name,
         password
@@ -43,7 +43,7 @@ const deleteUser=(req, res)=>{
             return res.status(400).send({message:"Error al encontrar el Usuario"})
         }
         if(!users){
-            return res.status(400).send({message:"Usuario no Existe"})
+            return res.status(404).send({message:"Usuario no Existe"})
         }
         return res.status(200).send(users)
     })

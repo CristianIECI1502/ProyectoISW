@@ -43,8 +43,22 @@
     "comment":{
         "name":{
             "type":"String",
-            "required":false
+            "required":true
+        }
+    },
+    "report":{
+        "name":{
+            "type":"String",
+            "required":true
+        },
+        "status":{
+            "type":"String",
+            "enum":[
+                "active",
+                "inactive",
+                "pending"
+            ],
+            "default":"pendiente"
         }
     }
-
 }
