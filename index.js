@@ -7,6 +7,8 @@ const app =express();
 const postRoutes = require('./routes/postRoutes');
 const commentRoutes = require('./routes/commentRoutes');
 const userRoutes = require('./routes/userRoutes');
+const reportRoutes = require('./routes/reportRoutes');
+
 
 app.use(cors())
 app.use(express.json());
@@ -14,6 +16,7 @@ app.options('*',cors());
 app.use('/api',postRoutes);
 app.use('/api',commentRoutes);
 app.use('/api',userRoutes);
+app.use('/api',reportRoutes);
 
 app.listen(process.env.PORT, () => console.log('Server started in port ',process.env.PORT));
 
