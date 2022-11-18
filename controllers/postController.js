@@ -1,10 +1,11 @@
 const Post = require('../models/post');
 
 const createPost = (req, res) =>{
-    const {description,createdAt} = req.body;
+    const {description,createdAt,user} = req.body;
     const newPost = new Post({
         description,
-        createdAt
+        createdAt,
+        user
     });
     newPost.save((err,post)=>{
         if(err){
@@ -20,7 +21,7 @@ const getPosts =(req, res)=>{
         }
         return res.status(200).send(posts)
     })*/
-    Post.find({}).populate('user','name').exec((err, post)=>{
+    Post.find({}).populate('user','name').populate('comment').exec((err, post)=>{
         if (err){
             return res.status(400).send({message:'no hay anuncios publicados'})
         }
