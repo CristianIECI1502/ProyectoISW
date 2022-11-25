@@ -13,10 +13,6 @@ const PostSchema= new Schema({
         type: Date,
         default: Date.now()
     },
-    comment: {
-        type: Schema.ObjectId,
-        ref: 'comment'
-    },
     user: {
         type: Schema.ObjectId,
         ref: 'user'

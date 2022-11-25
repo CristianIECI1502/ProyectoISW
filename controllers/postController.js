@@ -1,4 +1,5 @@
 const Post = require('../models/post');
+const user = require('../models/user');
 
 const createPost = (req, res) =>{
     const {description,createdAt,user} = req.body;
@@ -28,6 +29,8 @@ const getPosts =(req, res)=>{
         return res.status(200).send(post)
     })
 }
+var cuser = user.id;
+console.log("id de usuario ",cuser);
 const updatePost =(req, res)=>{
     const { id } = req.params;
     Post.findByIdAndUpdate(id, req.body,(err, posts)=>{
@@ -36,6 +39,13 @@ const updatePost =(req, res)=>{
         }
         if(!posts){
             return res.status(404).send({message: "Post no disponible"})
+        }
+        if(user.role=='admin'){
+            return res.status(200).send(posts)
+        }
+        console.log(posts.user);
+        if(posts.user!=cuser){
+            return res.status(403).send({message: "Usuario no puede editar este post"})
         }
         return res.status(200).send(posts)
     })
@@ -50,6 +60,13 @@ const deletePost = (req, res)=>{
         }
         if(!posts){
             return res.status(404).send({message: "Post no disponible"})
+        }
+        if(user.role=='admin'){
+            return res.status(200).send(posts)
+        }
+        console.log(posts.user);
+        if(posts.user!=cuser){
+            return res.status(403).send({message: "Usuario no puede editar este post"})
         }
         return res.status(200).send(posts)
     })
