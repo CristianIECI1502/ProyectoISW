@@ -29,7 +29,7 @@ const getPosts =(req, res)=>{
         return res.status(200).send(post)
     })
 }
-var cuser = user.id;
+const cuser = user.id;
 console.log("id de usuario ",cuser);
 const updatePost =(req, res)=>{
     const { id } = req.params;
