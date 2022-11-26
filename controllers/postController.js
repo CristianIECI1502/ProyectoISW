@@ -30,7 +30,7 @@ const getPosts =(req, res)=>{
     })
 }
 //const cuser = user.id;
-console.log("id de usuario ",cuser);
+//console.log("id de usuario ",cuser);
 const updatePost =(req, res)=>{
     const { id } = req.params;
     Post.findByIdAndUpdate(id, req.body,(err, posts)=>{
