@@ -1,10 +1,11 @@
 const Comment = require('../models/comment');
 
 const createComment = (req, res)=>{
-    const{name}=req.body;
+    const{comentario}=req.body;
     //console.log(name)
     const newComment = new Comment({
-        name
+        comentario,
+        createdAt
     });
     newComment.save((err,comment)=>{
         if(err){
