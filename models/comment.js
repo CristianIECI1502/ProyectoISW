@@ -8,6 +8,10 @@ const CommentSchema = new Schema({
     createdAt:{
         type: Date,
         default: Date.now()
+    },
+    post: {
+        type : Schema.ObjectId,
+        ref : 'post'
     }
 })
 
