@@ -1,11 +1,13 @@
 const Comment = require('../models/comment');
 
 const createComment = (req, res)=>{
-    const{comentario}=req.body;
+    const{comentario, createdAt, post, user}=req.body;
     //console.log(name)
     const newComment = new Comment({
         comentario,
-        createdAt
+        createdAt,
+        post,
+        user
     });
     newComment.save((err,comment)=>{
         if(err){
@@ -15,11 +17,11 @@ const createComment = (req, res)=>{
     })
 }
 const getComments =(req, res)=>{
-    Comment.find({},(err, comments) =>{
-        if(err){
-            return res.status(400).send({message:'no hay comentarios'})
-        }
-        return res.status(200).send(comments)
+            Comment.find({}).populate('user','name').populate('post').exec((err, comment)=>{
+            if (err){
+                return res.status(400).send({message:'no hay anuncios publicados'})
+            }
+            return res.status(200).send(comment)
     })
 }
 
