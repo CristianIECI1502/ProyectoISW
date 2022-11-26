@@ -66,7 +66,7 @@ const deletePost = (req, res)=>{
         }
         console.log(posts.user);
         if(posts.user!=cuser){
-            return res.status(403).send({message: "Usuario no puede editar este post"})
+            return res.status(403).send({message: "Usuario no puede eliminar este post"})
         }
         return res.status(200).send(posts)
     })
