@@ -29,7 +29,7 @@ const getPosts =(req, res)=>{
         return res.status(200).send(post)
     })
 }
-const cuser = user.id;
+//const cuser = user.id;
 console.log("id de usuario ",cuser);
 const updatePost =(req, res)=>{
     const { id } = req.params;
@@ -43,10 +43,10 @@ const updatePost =(req, res)=>{
         if(user.role=='admin'){
             return res.status(200).send(posts)
         }
-        console.log(posts.user);
+       /* console.log(posts.user);
         if(posts.user!=cuser){
             return res.status(403).send({message: "Usuario no puede editar este post"})
-        }
+        }*/
         return res.status(200).send(posts)
     })
 
@@ -65,9 +65,9 @@ const deletePost = (req, res)=>{
             return res.status(200).send(posts)
         }
         console.log(posts.user);
-        if(posts.user!=cuser){
+        /*if(posts.user!=cuser){
             return res.status(403).send({message: "Usuario no puede eliminar este post"})
-        }
+        }*/
         return res.status(200).send(posts)
     })
 }

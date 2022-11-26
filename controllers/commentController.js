@@ -25,7 +25,7 @@ const getComments =(req, res)=>{
             return res.status(200).send(comment)
     })
 }
-const cuser = user.id;
+//const cuser = user.id;
 const updateComment=(req, res) =>{
     const { id } = req.params;
     Comment.findByIdAndUpdate(id, req.body,(err,comments)=>{
@@ -36,9 +36,9 @@ const updateComment=(req, res) =>{
             return res.status(404).send({message: "comentarios no disponibles"})
         }
         console.log(comments.user);
-        if(comments.user!=cuser){
+        /*if(comments.user!=cuser){
             return res.status(403).send({message: "Usuario no puede editar este post"})
-        }
+        }*/
         return res.status(200).send(comments)
     })
 }
@@ -56,9 +56,9 @@ const deleteComment=(req, res)=>{
             return res.status(200).send(comments)
         }
         console.log(comments.user);
-        if(posts.user!=cuser){
+        /*if(posts.user!=cuser){
             return res.status(403).send({message: "Usuario no puede eliminar este comentario"})
-        }
+        } */
         return res.status(200).send(comments)
     })
 }
