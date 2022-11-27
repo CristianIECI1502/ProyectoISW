@@ -1,12 +1,14 @@
+const user = require('../models/user');
 const User = require('../models/user');
 
 const createUser = (req, res)=>{
     const{name,password,rut}=req.body;
     const newUser = new User({
+        identificador_casa,
         name,
         password,
         rut,
-        role
+        admin
     });
     newUser.save((err,user)=>{
         if(err){
@@ -15,9 +17,10 @@ const createUser = (req, res)=>{
         return res.status(200).send(user)
     })
 }
+
 const getUsers =(req, res)=>{
     User.find({},(err, users) =>{
-        if(user.role=='user'){
+        if(user.admin==False){
             return res.status(404).send({ message: "No tienes permiso suficiente."})
         }
         if(err){
@@ -33,7 +36,7 @@ const getUsers =(req, res)=>{
 const GetSpecificUser = (req, res) => {
     const { id } = req.params;
     User.findById(id, (err, users) => {
-        if(user.role=='user'){
+        if(user.admin==False){
             return res.status(404).send({ message: "No tienes permiso suficiente."})
         }
         if (err) {
@@ -49,7 +52,7 @@ const GetSpecificUser = (req, res) => {
 const updateUser=(req, res) =>{
     const { id } = req.params;
     User.findByIdAndUpdate(id, req.body,(err,users)=>{
-        if(user.role=='user'){
+        if(user.admin==False){
             return res.status(404).send({ message: "No tienes permiso suficiente."})
         }
         if (err){
@@ -65,7 +68,7 @@ const updateUser=(req, res) =>{
 const deleteUser=(req, res)=>{
     const { id }=req.params;
     User.findByIdAndDelete(id, req.body,(err,users)=>{
-        if(user.role=='user'){
+        if(user.admin==False){
             return res.status(404).send({ message: "No tienes permiso suficiente."})
         }
         if(err){
