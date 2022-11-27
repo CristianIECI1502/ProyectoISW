@@ -1,11 +1,12 @@
 const User = require('../models/user');
 
 const createUser = (req, res)=>{
-    const{name,password}=req.body;
-    //console.log(name)
+    const{name,password,rut}=req.body;
     const newUser = new User({
         name,
-        password
+        password,
+        rut,
+        role
     });
     newUser.save((err,user)=>{
         if(err){
@@ -14,44 +15,61 @@ const createUser = (req, res)=>{
         return res.status(200).send(user)
     })
 }
-const getUsers =(req, res)=>{
-    User.find({},(err, users) =>{
+const getUser =(req, res)=>{
+    User.find({},(err, user) =>{
         if(err){
-            return res.status(400).send({message:'no hay Usuarios'})
+            return res.status(400).send({message:'Error al obtener a los usuario'})
         }
-        return res.status(200).send(users)
+        if (!user) {
+            return res.status(404).send({ message: "No hay usuarios disponibles."})
+        }
+        return res.status(200).send(user)
+    })
+}
+
+const GetSpecificUser = (req, res) => {
+    const { id } = req.params;
+    User.findById(id, (err, user) => {
+        if (err) {
+            return res.status(400).send({ message: "Error al obtener el usuario"})
+        }
+        if (!user) {
+            return res.status(404).send({ message: "Usuario no encontrado"})
+        }
+        return res.status(200).send(User)
     })
 }
 
 const updateUser=(req, res) =>{
     const { id } = req.params;
-    User.findByIdAndUpdate(id, req.body,(err,users)=>{
+    User.findByIdAndUpdate(id, req.body,(err,user)=>{
         if (err){
             return res.status(400).send({message:"Error al encontrar los Usuario"})
         }
-        if(!users){
+        if(!user){
             return res.status(404).send({message: "Usuario no existe"})
         }
-        return res.status(200).send(users)
+        return res.status(200).send(user)
     })
 }
 
 const deleteUser=(req, res)=>{
     const { id }=req.params;
-    User.findByIdAndDelete(id, req.body,(err,users)=>{
+    User.findByIdAndDelete(id, req.body,(err,user)=>{
         if(err){
             return res.status(400).send({message:"Error al encontrar el Usuario"})
         }
-        if(!users){
+        if(!user){
             return res.status(404).send({message:"Usuario no Existe"})
         }
-        return res.status(200).send(users)
+        return res.status(200).send(user)
     })
 }
 
 module.exports ={
     createUser,
-    getUsers,
+    getUser,
+    GetSpecificUser,
     updateUser,
     deleteUser
 }

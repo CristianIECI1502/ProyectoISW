@@ -1,11 +1,15 @@
 {
-    "users": {
+    "user": {
         "name":{
             "type":"String",
             "required":true
         },
         "password":{
             "type":"String",
+            "required": true
+        },
+        "rut": {
+            "type": "String",
             "required": true
         },
         "role":{
