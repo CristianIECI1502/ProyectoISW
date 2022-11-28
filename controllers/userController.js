@@ -2,7 +2,7 @@ const user = require('../models/user');
 const User = require('../models/user');
 
 const createUser = (req, res)=>{
-    const{identificador_casa,name,password,rut,admin}=req.body;
+    const{name,password,rut}=req.body;
     const newUser = new User({
         identificador_casa,
         name,
