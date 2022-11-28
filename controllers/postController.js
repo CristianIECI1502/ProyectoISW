@@ -22,7 +22,7 @@ const getPosts =(req, res)=>{
         }
         return res.status(200).send(posts)
     })*/
-    Post.find({}).populate('user','name').populate('comment').exec((err, post)=>{
+    Post.find({}).populate({path:'user',select:'name'}).populate('comment').exec((err, post)=>{
         if (err){
             return res.status(400).send({message:'no hay anuncios publicados'})
         }
@@ -40,7 +40,7 @@ const updatePost =(req, res)=>{
         if(!posts){
             return res.status(404).send({message: "Post no disponible"})
         }
-        if(user.role=='admin'){
+        if(user.admin==true){
             return res.status(200).send(posts)
         }
        /* console.log(posts.user);
@@ -61,7 +61,7 @@ const deletePost = (req, res)=>{
         if(!posts){
             return res.status(404).send({message: "Post no disponible"})
         }
-        if(user.role=='admin'){
+        if(user.admin==true){
             return res.status(200).send(posts)
         }
         console.log(posts.user);
