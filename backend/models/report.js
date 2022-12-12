@@ -5,24 +5,24 @@ const ReportSchema = new Schema({
         type: String,
         required: true
     },
-    usuario:{
-        type: Schema.ObjectID,
-        ref:'user',
+    user: {
+        type: Schema.ObjectId,
+        ref: 'user',
         required:true
     },
     postR:{
-        type: Schema.ObjectID,
-        ref:'comment',
-        required: true
+        type: Schema.ObjectId,
+        ref: 'post',
+        required:true
     },
     status:{
         type:String,
         enum:[
-            'active',
-            'inactive',
-            'pending'
+            "active",
+            "inactive",
+            "pending"
         ],
-        default:'pending'
+        default:"pending"
     }
 })
 
