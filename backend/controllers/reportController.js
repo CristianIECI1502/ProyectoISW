@@ -1,10 +1,12 @@
 const Report = require('../models/report');
 
 const createReport = (req, res)=>{
-    const{name,status}=req.body;
+    const{Nreport,usuario,postR,status}=req.body;
     //console.log(name)
     const newReport = new Report({
-        name,
+        Nreport,
+        usuario,
+        postR,
         status
     });
     newReport.save((err,report)=>{

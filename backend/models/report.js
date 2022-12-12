@@ -14,6 +14,15 @@ const ReportSchema = new Schema({
         type: Schema.ObjectID,
         ref:'comment',
         required: true
+    },
+    status:{
+        type:String,
+        enum:[
+            'active',
+            'inactive',
+            'pending'
+        ],
+        default:'pending'
     }
 })
 
