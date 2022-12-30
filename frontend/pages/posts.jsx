@@ -1,9 +1,9 @@
 import {useEffect,useState} from 'react'
 import axios from 'axios'
-import { Box, Button, ButtonGroup, Container, Flex, Heading, HStack, IconButton, Spacer, useAccordionStyles } from '@chakra-ui/react';
+import { Box, Button, ButtonGroup, Container, Heading, IconButton, Spacer } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 import { getPosts } from '../data/post'
-import { DeleteIcon, EditIcon, WarningTwoIcon } from '@chakra-ui/icons';
+import { DeleteIcon, EditIcon, } from '@chakra-ui/icons';
 
 const Posts = () => {
 
@@ -11,26 +11,25 @@ const Posts = () => {
         id:'',
         description:'',
         createdAt:'',
-        
+        name:''
     }]);
-
 
     const router=useRouter()
 
     const contenido = () =>{
       return post.map(posts=>{
         return(
-          console.log("hola",posts),
-
+          console.log("info:",posts),
         <Box key={posts._id} maxWidth='lg' borderWidth='2px' overflow={'hidden'}>
           <Box>
+          {posts.name}
             {posts.description}
             <Box>
-              {posts.createdAt}
+              {posts.createdAt}{Date}
               <ButtonGroup>
                 <Spacer width={'140px'}/>
-              <IconButton aria-label='Editar'icon={<EditIcon/>} colorScheme='linkedin' onClick={()=> router.push('./edpost')}/> 
-              <IconButton aria-label='Eliminar' icon={<DeleteIcon/>} colorScheme='red' onClick={()=> router.push('./depost')}/>
+              <IconButton aria-label='Editar'icon={<EditIcon/>} colorScheme='linkedin' onClick={()=> router.push(`./post/${posts._id}`)}/> 
+              <IconButton aria-label='Eliminar' icon={<DeleteIcon/>} colorScheme='red' onClick={()=> router.push(`./depost/${posts._id}`)}/>
               </ButtonGroup>
               </Box>
           </Box>
@@ -38,7 +37,6 @@ const Posts = () => {
         )
       })
     }
-
     useEffect(() => {
         getPosts().then(res =>{
           setPost(res.data)
@@ -50,8 +48,10 @@ const Posts = () => {
     <>
     <Container>
       <Heading as='h1'>Avisos</Heading>
+      <Box>
       {contenido()}
-      <Button colorScheme='linkedin' onClick={()=> router.push('./Postear')} >Nueva Publicaion</Button>
+      </Box>
+      <Button colorScheme='linkedin' onClick={()=> router.push('./Postear')} >Nueva Publicación</Button>
     </Container>
     </>
   )
