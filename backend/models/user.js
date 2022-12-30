@@ -1,4 +1,6 @@
-const mongoose = require('mongoose');
+const mongoose =require('mongoose');
+//import  mongoose  from "mongoose";
+
 const Schema = mongoose.Schema;
 const UserSchema = new Schema({
     identificador_casa: {
@@ -24,3 +26,4 @@ const UserSchema = new Schema({
 });
 
 module.exports = mongoose.model('user', UserSchema);
+//export default mongoose.model('user',UserSchema)

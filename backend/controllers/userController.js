@@ -20,9 +20,6 @@ const createUser = (req, res)=>{
 
 const getUsers =(req, res)=>{
     User.find({},(err, users) =>{
-        if(user.admin==false){
-            return res.status(403).send({ message: "No tienes permiso suficiente."})
-        }
         if(err){
             return res.status(400).send({message:'Error al obtener a los usuario'})
         }
@@ -36,9 +33,6 @@ const getUsers =(req, res)=>{
 const GetSpecificUser = (req, res) => {
     const { id } = req.params;
     User.findById(id, (err, users) => {
-        if(user.admin==false){
-            return res.status(403).send({ message: "No tienes permiso suficiente."})
-        }
         if (err) {
             return res.status(400).send({ message: "Error al obtener el usuario"})
         }
@@ -52,9 +46,6 @@ const GetSpecificUser = (req, res) => {
 const updateUser=(req, res) =>{
     const { id } = req.params;
     User.findByIdAndUpdate(id, req.body,(err,users)=>{
-        if(user.admin==false){
-            return res.status(403).send({ message: "No tienes permiso suficiente."})
-        }
         if (err){
             return res.status(400).send({message:"Error al encontrar los Usuario"})
         }
@@ -68,9 +59,6 @@ const updateUser=(req, res) =>{
 const deleteUser=(req, res)=>{
     const { id }=req.params;
     User.findByIdAndDelete(id, req.body,(err,users)=>{
-        if(user.admin==false){
-            return res.status(403).send({ message: "No tienes permiso suficiente."})
-        }
         if(err){
             return res.status(400).send({message:"Error al encontrar el Usuario"})
         }
