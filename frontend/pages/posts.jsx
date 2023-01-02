@@ -1,9 +1,9 @@
 import {useEffect,useState} from 'react'
 import axios from 'axios'
-import { Box, Button, ButtonGroup, Container, Heading, IconButton, Spacer } from '@chakra-ui/react';
+import { Box, Button, ButtonGroup, Container, Heading, IconButton, Link, Spacer } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 import { getPosts } from '../data/post'
-import { DeleteIcon, EditIcon, } from '@chakra-ui/icons';
+import { ChatIcon, DeleteIcon, EditIcon, } from '@chakra-ui/icons';
 
 const Posts = () => {
 
@@ -31,6 +31,11 @@ const Posts = () => {
               <IconButton aria-label='Editar'icon={<EditIcon/>} colorScheme='linkedin' onClick={()=> router.push(`./post/${posts._id}`)}/> 
               <IconButton aria-label='Eliminar' icon={<DeleteIcon/>} colorScheme='red' onClick={()=> router.push(`./depost/${posts._id}`)}/>
               </ButtonGroup>
+              <Box>
+                <Link href={`./com/${posts._id}`} color='green' fontWeight={'bold'}>
+                  Ver Comentarios
+                </Link>
+              </Box>
               </Box>
           </Box>
         </Box>
