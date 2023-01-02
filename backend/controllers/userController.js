@@ -1,15 +1,11 @@
-const user = require('../models/user');
 const User = require('../models/user');
 
 const createUser = (req, res)=>{
-    const{name,password,rut}=req.body;
+    const{rut}=req.body;
     const newUser = new User({
-        identificador_casa,
-        name,
-        password,
         rut,
-        admin
     });
+    console.log(rut);
     newUser.save((err,user)=>{
         if(err){
             return res.status(400).send({message:'Error al crear Usuario'})
@@ -23,7 +19,7 @@ const getUsers =(req, res)=>{
         if(err){
             return res.status(400).send({message:'Error al obtener a los usuario'})
         }
-        if (!user) {
+        if (!User) {
             return res.status(404).send({ message: "No hay usuarios disponibles."})
         }
         return res.status(200).send(users)
@@ -69,10 +65,15 @@ const deleteUser=(req, res)=>{
     })
 }
 
+const login = (req, res)=>{
+    return res.status(200).send({message:'Longeado'})
+}
+
 module.exports ={
     createUser,
     getUsers,
     GetSpecificUser,
     updateUser,
-    deleteUser
+    deleteUser,
+    login
 }

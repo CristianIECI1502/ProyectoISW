@@ -46,7 +46,7 @@ const Posts = () => {
 
   return (
     <>
-    <Container>
+    <Container backgroundImage='url(https://album.mediaset.es/eimg/2018/01/19/YZazlbX4I5LfwC68ER4rR6.jpg?w=1200)'backgroundColor={''}backgroundPosition='center'>
       <Heading as='h1'>Avisos</Heading>
       <Box>
       {contenido()}
