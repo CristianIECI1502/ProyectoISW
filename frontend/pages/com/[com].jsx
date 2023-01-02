@@ -39,8 +39,8 @@ const Com = ({data}) => {
           <Box>
             {comentario.createdAt}{Date}
             <ButtonGroup>
-            <IconButton aria-label='Editar'icon={<EditIcon/>} colorScheme='linkedin' onClick={()=> router.push(`./post/${comentario._id}`)}/>
-            <IconButton aria-label='Eliminar' icon={<DeleteIcon/>} colorScheme='red' onClick={()=> router.push(`./depost/${comentario._id}`)}/>
+            <IconButton aria-label='Editar'icon={<EditIcon/>} colorScheme='linkedin' onClick={()=> router.push(`../edcom/${comentario._id}`)}/>
+            <IconButton aria-label='Eliminar' icon={<DeleteIcon/>} colorScheme='red' onClick={()=> router.push(`../delcom/${comentario._id}`)}/>
             </ButtonGroup>
           </Box>
         </Box>

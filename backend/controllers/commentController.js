@@ -26,6 +26,18 @@ const getComments =(req, res)=>{
             return res.status(200).send(comment)
     })
 }
+const comentario = (req, res) => {
+    const { id } = req.params;
+    Comment.findById(id).populate({ path: 'user',select:'name' }).exec((err, comments) => {
+        if (err) {
+            return res.status(400).send({ message: "Error al obtener el comentario" })
+        }
+        if (!comments) {
+            return res.status(404).send({ message: "comentario no encontrado" })
+        }
+        return res.status(200).send(comments)
+    })
+}
 //const cuser = user.id;
 const updateComment=(req, res) =>{
     const { id } = req.params;
@@ -53,13 +65,6 @@ const deleteComment=(req, res)=>{
         if(!comments){
             return res.status(404).send({message:"comentario no disponible"})
         }
-        if(user.role=='admin'){
-            return res.status(200).send(comments)
-        }
-        console.log(comments.user);
-        /*if(posts.user!=cuser){
-            return res.status(403).send({message: "Usuario no puede eliminar este comentario"})
-        } */
         return res.status(200).send(comments)
     })
 }
@@ -68,5 +73,6 @@ module.exports ={
     createComment,
     getComments,
     updateComment,
-    deleteComment
+    deleteComment,
+    comentario
 }
