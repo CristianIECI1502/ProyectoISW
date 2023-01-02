@@ -1,7 +1,7 @@
 import {useState, React, useRef} from 'react'
 import { useRouter } from 'next/router'
 import {getIdPost,updatePost} from '../../data/post'
-import { AlertDialog, AlertDialogBody, AlertDialogContent, AlertDialogFooter, AlertDialogHeader, AlertDialogOverlay, background, Button, ButtonGroup, color, Container, FormControl, FormLabel, Image, Textarea, useDisclosure } from '@chakra-ui/react'
+import { AlertDialog, AlertDialogBody, AlertDialogContent, AlertDialogFooter, AlertDialogHeader, AlertDialogOverlay, Button, ButtonGroup, Container, FormControl, FormLabel, Image, Textarea, useDisclosure } from '@chakra-ui/react'
 
 export const getServerSideProps = async (context)=>{
   const response=await getIdPost(context.query.edpost)
@@ -37,7 +37,7 @@ const Edidar = ({data}) => {
     <html>
       <body>
         <Container>
-     <Image src='https://www.zooplus.es/magazine/wp-content/uploads/2022/05/Cuanto-pesa-un-gato-2.jpeg'/>
+     <Image src='https://www.dzoom.org.es/wp-content/uploads/2020/04/programas-editar-videos-con-fotos-portada-1024x682.jpg' alt=''width={'lg'}/>
           <FormControl id='description'>
           <FormLabel>Publicacion a editar</FormLabel>
           <Textarea size={'lg'} name='description' onChange={handleChange} value={post.description}/>

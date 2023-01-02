@@ -1,4 +1,4 @@
-import { AlertDialog, AlertDialogBody, AlertDialogContent, AlertDialogFooter, AlertDialogHeader, AlertDialogOverlay, Button, ButtonGroup, Container, FormControl, FormLabel, Textarea, useDisclosure } from '@chakra-ui/react'
+import { AlertDialog, AlertDialogBody, AlertDialogContent, AlertDialogFooter, AlertDialogHeader, AlertDialogOverlay, Button, ButtonGroup, Container, FormControl, FormLabel, Textarea, useDisclosure,Image } from '@chakra-ui/react'
 import { useRouter } from 'next/router'
 import {React,useRef,useState} from 'react'
 import {getIdPost,deletePost} from '../../data/post'
@@ -34,7 +34,9 @@ const Eliminar = ({data}) => {
 console.log("Esta",post)
 console.log(depost)
   return (
+    <body>
     <Container>
+      <Image src='https://demandasvecinalesvillajoyosa.files.wordpress.com/2018/03/img_9238.jpg' alt=''width={'lg'}/>
       <FormControl id='description'>
         <FormLabel>Publicación a Eliminar</FormLabel>
         <Textarea size={'lg'} name='description' onChange={handleChange} value={post.description} isReadOnly/>
@@ -58,6 +60,7 @@ console.log(depost)
         </AlertDialog>
       </FormControl>
     </Container>
+    </body>
   )
 }
 
