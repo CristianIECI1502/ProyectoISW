@@ -18,6 +18,7 @@ const createComment = (req, res)=>{
     })
 }
 const getComments =(req, res)=>{
+    console.log(res)
             Comment.find({}).populate('user','name').populate('post').exec((err, comment)=>{
             if (err){
                 return res.status(400).send({message:'no hay anuncios publicados'})

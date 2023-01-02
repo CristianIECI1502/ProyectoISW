@@ -1,20 +1,80 @@
-import React, { useState } from 'react'
+import { DeleteIcon, EditIcon } from '@chakra-ui/icons'
+import { Box, Button, ButtonGroup, Container, FormControl, FormLabel, IconButton, Textarea } from '@chakra-ui/react'
+import { useRouter } from 'next/router'
+import React, { useState, useEffect } from 'react'
 import {getIdPost} from '../../data/post'
-
+import {getComent} from '../../data/coment'
 export const getServerSideProps= async(context)=>{
-    const response = await getIdPost(context.query.depost)
+    const response = await getIdPost(context.query.com)
     return {
         props:{
             data:response.data
         }
     }
 }
-const com = ({data}) => {
-  useState
+const Com = ({data}) => {
+  const [coment, setComent] = useState([{
+  id:'',
+  comentario: '',
+  createdAt:''
+ }])
+ 
+  const [verpost,setVerpost] = useState(data)
+  const handleChange = (e) =>{
+    setVerpost({
+      ...verpost,
+      [e.target.name]:e.target.value
+    })
+  }
+  const router = useRouter()
+  
+  const contenido = () => {
+    return coment.map(comentario => {
+    return  (
+      console.log("info:",comentario),
+      <Box key={comentario._id} maxWidth='lg' borderWidth='2px' overflow={'hidden'}>
+        <Box>
+        {comentario.name}
+          {comentario.comentario}
+          <Box>
+            {comentario.createdAt}{Date}
+            <ButtonGroup>
+            <IconButton aria-label='Editar'icon={<EditIcon/>} colorScheme='linkedin' onClick={()=> router.push(`./post/${comentario._id}`)}/>
+            <IconButton aria-label='Eliminar' icon={<DeleteIcon/>} colorScheme='red' onClick={()=> router.push(`./depost/${comentario._id}`)}/>
+            </ButtonGroup>
+          </Box>
+        </Box>
+      </Box>
+      
+      )
+    })
+  }
+  useEffect(() => {
+    getComent().then(res =>{
+      setComent(res.data)
+    })
+  }, []);
+  
+  //const {com} = router.query
+  
+  
+  
   return (
-    <div>com</div>
-  )
+    <>
+  <Container>
 
+          <FormControl id='description'>
+          <FormLabel>
+            Publicacion
+          </FormLabel>
+          <Textarea backgroundColor={'linkedin.100'} size={'lg'} name='description' onChange={handleChange} value= {verpost.description} isReadOnly/>
+        </FormControl>
+  <Box> {contenido()} </Box>
+  <Button colorScheme='linkedin' onClick={()=> router.push('../Comentar')} > Comentar </Button>
+  </Container>
+  </>
+  )
+  
 }
 
-export default com
+export default Com
