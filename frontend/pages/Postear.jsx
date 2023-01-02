@@ -32,7 +32,6 @@ const Nombre = () => {
       <Stack spacing={3}>
         <FormControl id="description">
           <FormLabel>Publicacion</FormLabel>
-           
           <Textarea size={'lg'} placeholder='Escriba su publicación' name="description" onChange={handleChange}/>
           <Button variant='outline' onClick={submitpost} colorScheme={"linkedin"}>Subir</Button>
           <Button variant='outline' onClick={()=>router.push('./posts')}colorScheme={"red"} >Cancelar</Button>

@@ -14,13 +14,14 @@ const Posts = () => {
         name:''
     }]);
 
+    
     const router=useRouter()
 
     const contenido = () =>{
       return post.map(posts=>{
         return(
           console.log("info:",posts),
-        <Box key={posts._id} maxWidth='lg' borderWidth='2px' overflow={'hidden'}>
+        <Box key={posts._id} maxWidth='lg' borderWidth='2px' overflow={'hidden'} color='white'>
           <Box>
           {posts.name}
             {posts.description}
@@ -51,7 +52,7 @@ const Posts = () => {
 
   return (
     <>
-    <Container backgroundImage='url(https://album.mediaset.es/eimg/2018/01/19/YZazlbX4I5LfwC68ER4rR6.jpg?w=1200)'backgroundColor={''}backgroundPosition='center'>
+    <Container backgroundColor={'blueviolet'}>
       <Heading as='h1'>Avisos</Heading>
       <Box>
       {contenido()}

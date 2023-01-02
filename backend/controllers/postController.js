@@ -16,6 +16,7 @@ const createPost = (req, res) =>{
     })
 }
 const getPosts =(req, res)=>{
+    console.log(res);
     Post.find({}).populate({path:'user',select:'name'}).populate('comment').exec((err, post)=>{
         if (err){
             return res.status(400).send({message:'no hay anuncios publicados'})
@@ -35,8 +36,7 @@ const postspc = (req, res) => {
         return res.status(200).send(post)
     })
 }
-//const cuser = user.id;
-//console.log("id de usuario ",cuser);
+
 const updatePost =(req, res)=>{
     const { id } = req.params;
     Post.findByIdAndUpdate(id, req.body,(err, posts)=>{
