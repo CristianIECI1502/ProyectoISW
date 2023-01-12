@@ -13,7 +13,7 @@ import { createComent } from "../data/coment";
 const Comentar = () => {
     const router = useRouter();
     const [comentar, setComentar] = useState({
-        description: "",
+        comentario: "",
         name: "",
     });
     const handleChange = (e) => {
@@ -39,7 +39,7 @@ const Comentar = () => {
                         <Textarea
                             size={"lg"}
                             placeholder="Escriba su Comentario"
-                            name="description"
+                            name="comentario"
                             onChange={handleChange}
                         />
                         <Button
