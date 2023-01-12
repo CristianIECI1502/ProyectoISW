@@ -17,7 +17,7 @@ const createPost = (req, res) =>{
 }
 const getPosts =(req, res)=>{
     console.log(res);
-    Post.find({}).populate({path:'user',select:'name'}).populate('comment').exec((err, post)=>{
+    Post.find({}).populate({path:'user',select:'rut'}).populate('comment').exec((err, post)=>{
         if (err){
             return res.status(400).send({message:'no hay anuncios publicados'})
         }
@@ -26,7 +26,7 @@ const getPosts =(req, res)=>{
 }
 const postspc = (req, res) => {
     const { id } = req.params;
-    Post.findById(id).populate({ path: 'user',select:'name' }).exec((err, post) => {
+    Post.findById(id).populate({ path: 'user',select:'rut' }).exec((err, post) => {
         if (err) {
             return res.status(400).send({ message: "Error al obtener el post" })
         }

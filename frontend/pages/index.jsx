@@ -16,12 +16,12 @@ const Index = () => {
     e.preventDefault()
     const result = await login(rut)
     try {
-      if (result.status === 200) {
+      //if (result.status === 200) {
         localStorage.setItem('token', rut)
         router.push('./posts')
-      }
+      //}
     } catch (error) {
-
+      
     }
   }
   return (

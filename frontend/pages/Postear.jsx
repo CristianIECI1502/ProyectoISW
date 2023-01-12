@@ -1,4 +1,4 @@
-import { Container, Stack, FormControl, FormLabel, Textarea, Button } from '@chakra-ui/react'
+import { Container, Stack, FormControl, FormLabel, Textarea, Button, useToken, Input } from '@chakra-ui/react'
 import { useState } from 'react'
 import { useRouter } from 'next/router'
 import { createPost } from '../data/post'
@@ -8,8 +8,10 @@ const Nombre = () => {
   const router = useRouter()
   const [post, setPost] = useState({
     description: "",
-    name: ""
+    name: "",
+    user: {rut:''}
   })
+
   const handleChange = (e) => {
     setPost({
       ...post,
@@ -32,7 +34,7 @@ const Nombre = () => {
         <Stack spacing={3}>
           <FormControl id="description">
             <FormLabel>Publicacion</FormLabel>
-
+            <Input placeholder='usuario' name='user' onChange={handleChange}/>
             <Textarea size={'lg'} placeholder='Escriba su publicación' name="description" onChange={handleChange} />
             <Button variant='outline' onClick={submitpost} colorScheme={"linkedin"}>Subir</Button>
             <Button variant='outline' onClick={() => router.push('./posts')} colorScheme={"red"} >Cancelar</Button>

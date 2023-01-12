@@ -10,29 +10,20 @@ const Posts = () => {
     id: '',
     description: '',
     createdAt: '',
-    name: ''
+    user:{_id:'',rut:''}
   }]);
 
-<<<<<<< HEAD
-    
-    const router=useRouter()
-
-    const contenido = () =>{
-      return post.map(posts=>{
-        return(
-          console.log("info:",posts),
-        <Box key={posts._id} maxWidth='lg' borderWidth='2px' overflow={'hidden'} color='white'>
-=======
   const router = useRouter()
 
   const contenido = () => {
     return post.map(posts => {
       return (
         console.log("info:", posts),
-        <Box key={posts._id} maxWidth='lg' borderWidth='2px' overflow={'hidden'}>
->>>>>>> fa3fdbfc1d1b1a99be3c24ea7dc7aa4574a6ea49
+        <Box key={posts._id} maxWidth='lg' borderWidth='2px' overflow={'hidden'} user={posts.user}>
           <Box>
-            {posts.name}
+            <Box>
+            {posts.user.rut}
+            </Box>
             {posts.description}
             <Box>
               {posts.createdAt}{Date}
@@ -62,15 +53,6 @@ const Posts = () => {
 
   return (
     <>
-<<<<<<< HEAD
-    <Container backgroundColor={'blueviolet'}>
-      <Heading as='h1'>Avisos</Heading>
-      <Box>
-      {contenido()}
-      </Box>
-      <Button colorScheme='linkedin' onClick={()=> router.push('./Postear')} >Nueva Publicación</Button>
-    </Container>
-=======
       <Container backgroundColor={'LightGrey'} backgroundPosition='center'>
         <Heading size={"2xl"}textAling={"center"} my={10} as='h1'>Avisos</Heading>
         <Box>
@@ -80,7 +62,6 @@ const Posts = () => {
           <Button colorScheme='linkedin' w={"full"} my={5} onClick={() => router.push('./Postear')} >Nueva Publicación</Button>
         </HStack>
       </Container>
->>>>>>> fa3fdbfc1d1b1a99be3c24ea7dc7aa4574a6ea49
     </>
   )
 }

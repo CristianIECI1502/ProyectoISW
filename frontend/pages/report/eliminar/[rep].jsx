@@ -2,6 +2,7 @@ import { React, useState } from 'react'
 import { getReport, updateReport } from '../../../data/report'
 import { useRouter } from 'next/router'
 import Swal from 'sweetalert2'
+import { Button, Container,FormControl,FormLabel,Stack, Textarea } from '@chakra-ui/react'
 
 export const getServerSideProps = async (context) => {
     const response = await getReport(context.query.rep)
@@ -13,7 +14,7 @@ export const getServerSideProps = async (context) => {
 }
 
 
-const eliminar = ({ data }) => {
+const Eliminar = ({ data }) => {
     const [report, setReport] = useState(data)
     const router = useRouter()
     const { reportar } = router.query
@@ -47,7 +48,7 @@ const eliminar = ({ data }) => {
             )
         }
     }
-}
+
 return (
 
     
@@ -66,5 +67,5 @@ return (
         </Container>
     </>
 )
-
-export default eliminar
+}
+export default Eliminar

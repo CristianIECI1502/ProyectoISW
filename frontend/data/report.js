@@ -1,5 +1,5 @@
 import axios from "axios";
-import report from "../../backend/models/report";
+
 
 const getReports = async () => {
     const response = await axios.get(`${process.env.SERVIDOR}/report`);

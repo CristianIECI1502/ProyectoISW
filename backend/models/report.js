@@ -3,26 +3,26 @@ const Schema = mongoose.Schema;
 const ReportSchema = new Schema({
     Nreport: {
         type: String,
-        required: true
+        //required: true
     },
     user: {
         type: Schema.ObjectId,
         ref: 'user',
-        required:true
+        //required:true
     },
     postR:{
         type: Schema.ObjectId,
         ref: 'post',
-        required:true
+        //required:true
     },
     status:{
         type:String,
-        enum:[
+    /*    enum:[
             "active",
             "inactive",
             "pending"
         ],
-        default:"pending"
+        default:"pending"*/
     }
 })
 
