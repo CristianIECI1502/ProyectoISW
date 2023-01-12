@@ -5,6 +5,7 @@ import {
     FormLabel,
     Textarea,
     Button,
+    Input,
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { useRouter } from "next/router";
@@ -15,6 +16,7 @@ const Comentar = () => {
     const [comentar, setComentar] = useState({
         comentario: "",
         name: "",
+        user: {_id:''}
     });
     const handleChange = (e) => {
         setComentar({
@@ -35,7 +37,7 @@ const Comentar = () => {
                 <Stack spacing={3}>
                     <FormControl id="description">
                         <FormLabel>Comentario</FormLabel>
-
+                        <Input placeholder='usuario' name='user' onChange={handleChange}/>
                         <Textarea
                             size={"lg"}
                             placeholder="Escriba su Comentario"

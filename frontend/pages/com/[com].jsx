@@ -16,7 +16,8 @@ const Com = ({data}) => {
   const [coment, setComent] = useState([{
   id:'',
   comentario: '',
-  createdAt:''
+  createdAt:'',
+  user:{_id:'',rut:''}
  }])
  
   const [verpost,setVerpost] = useState(data)
@@ -34,7 +35,10 @@ const Com = ({data}) => {
       console.log("info:",comentario),
       <Box key={comentario._id} maxWidth='lg' borderWidth='2px' overflow={'hidden'}>
         <Box>
-        {comentario.name}
+        <Box>
+        {comentario.user.rut}
+
+        </Box>
           {comentario.comentario}
           <Box>
             {comentario.createdAt}{Date}
@@ -70,7 +74,10 @@ const Com = ({data}) => {
           <Textarea backgroundColor={'linkedin.100'} size={'lg'} name='description' onChange={handleChange} value= {verpost.description} isReadOnly/>
         </FormControl>
   <Box> {contenido()} </Box>
+  <ButtonGroup>
   <Button colorScheme='linkedin' onClick={()=> router.push('../Comentar')} > Comentar </Button>
+  <Button colorScheme='red' onClick={()=> router.push('../posts')} > Volver </Button>
+  </ButtonGroup>
   </Container>
   </>
   )
