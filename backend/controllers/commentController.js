@@ -19,7 +19,7 @@ const createComment = (req, res)=>{
 }
 const getComments =(req, res)=>{
     console.log(res)
-            Comment.find({}).populate('user','name').populate('post').exec((err, comment)=>{
+            Comment.find({}).populate({path: 'user', select: 'rut'}).populate('post').exec((err, comment)=>{
             if (err){
                 return res.status(400).send({message:'no hay anuncios publicados'})
             }
@@ -28,7 +28,7 @@ const getComments =(req, res)=>{
 }
 const comentario = (req, res) => {
     const { id } = req.params;
-    Comment.findById(id).populate({ path: 'user',select:'name' }).exec((err, comments) => {
+    Comment.findById(id).populate({ path: 'user',select:'rut' }).exec((err, comments) => {
         if (err) {
             return res.status(400).send({ message: "Error al obtener el comentario" })
         }
